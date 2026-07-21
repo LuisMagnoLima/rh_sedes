@@ -55,10 +55,12 @@ export default function PeoplePage() {
 
 
   const filtered = useMemo(() => {
+    const validPeople = Array.isArray(people) ? people.filter(Boolean) : [];
     const term = search.trim().toLowerCase();
-    if (!term) return people;
 
-    return people.filter((person) =>
+    if (!term) return validPeople;
+
+    return validPeople.filter((person) =>
       [
         person.name,
         person.cpf,
@@ -68,7 +70,7 @@ export default function PeoplePage() {
         person.course,
       ]
         .filter(Boolean)
-        .some((value) => value.toLowerCase().includes(term))
+        .some((value) => String(value).toLowerCase().includes(term))
     );
   }, [people, search]);
 
@@ -262,7 +264,7 @@ export default function PeoplePage() {
                       <td>
                         {person.employmentType === "BANCO_TALENTOS"
                           ? "Banco de Talentos"
-                          : selected.sedesContractActive === false
+                          : person.sedesContractActive === false
                             ? "Ex-contratado SEDES"
                             : "Contratado SEDES"}
                       </td>
@@ -275,7 +277,7 @@ export default function PeoplePage() {
                           ? person.working
                             ? "Trabalhando"
                             : "Não trabalhando"
-                          : selected.sedesContractActive === false
+                          : person.sedesContractActive === false
                             ? "Contrato removido"
                             : "Não se aplica"}
                       </td>
