@@ -1,0 +1,18 @@
+# Projeto Node.js: dependências oficiais nos package.json.
+
+BACKEND:
+express
+cors
+dotenv
+prisma
+@prisma/client
+nodemon
+
+FRONTEND:
+react
+react-dom
+react-router-dom
+axios
+lucide-react
+vite
+@vitejs/plugin-react

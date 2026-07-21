@@ -1,0 +1,108 @@
+/// Arquivo principal de modelagem do banco de dados do RH SEDES.
+/// Define o gerador do Prisma Client, a conexão PostgreSQL, enumerações e tabelas.
+/// As relações representam empresas, pessoas, tecnologias e usuários de acesso.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Enumeração usada para limitar os valores válidos de CompanyStatus.
+enum CompanyStatus {
+  ATIVA
+  INATIVA
+}
+
+/// Enumeração usada para limitar os valores válidos de PersonType.
+enum PersonType {
+  TERCEIRIZADO
+  CONTRATADO_SEDES
+}
+
+/// Enumeração usada para limitar os valores válidos de UserRole.
+enum UserRole {
+  ADMIN
+  USER
+}
+
+/// Modelo persistido que representa Company no domínio da aplicação.
+model Company {
+  id        Int           @id @default(autoincrement())
+  legalName String
+  tradeName String
+  cnpj      String        @unique
+  phone     String?
+  email     String
+  manager   String?
+  status    CompanyStatus @default(ATIVA)
+  notes     String?
+  people    Person[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([tradeName])
+  @@index([status])
+}
+
+/// Modelo persistido que representa Person no domínio da aplicação.
+model Person {
+  id                  Int                @id @default(autoincrement())
+  fullName            String
+  cpf                 String             @unique
+  birthDate           DateTime?
+  phone               String?
+  email               String             @unique
+  course              String
+  type                PersonType
+  working             Boolean?
+  sector              String?
+  vacation            Boolean            @default(false)
+  vacationStart       DateTime?
+  vacationEnd         DateTime?
+  active              Boolean            @default(true)
+  sedesContractActive Boolean            @default(true)
+  companyId           Int?
+  company             Company?           @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  technologies        PersonTechnology[]
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  @@index([fullName])
+  @@index([type])
+  @@index([sector])
+  @@index([companyId])
+}
+
+/// Modelo persistido que representa Technology no domínio da aplicação.
+model Technology {
+  id     Int                @id @default(autoincrement())
+  name   String             @unique
+  people PersonTechnology[]
+}
+
+/// Modelo persistido que representa PersonTechnology no domínio da aplicação.
+model PersonTechnology {
+  personId     Int
+  technologyId Int
+  person       Person     @relation(fields: [personId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([personId, technologyId])
+  @@index([technologyId])
+}
+
+/// Modelo persistido que representa User no domínio da aplicação.
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  username  String   @unique
+  password  String
+  role      UserRole @default(USER)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

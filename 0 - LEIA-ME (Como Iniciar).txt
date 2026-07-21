@@ -1,0 +1,33 @@
+=========================================================
+RH SEDES
+GUIA RÁPIDO DE UTILIZAÇÃO
+=========================================================
+
+1° PASSO
+Execute:
+1 - Instalar Requisitos (Primeira Vez).bat
+
+2° PASSO
+Execute:
+2 - Iniciar Sistema (Uso Diário).bat
+
+O sistema abrirá Backend e Frontend automaticamente.
+
+=========================================================
+ARQUIVOS
+=========================================================
+
+3 - Iniciar Backend (Somente Backend).bat
+Inicia apenas o Backend.
+
+4 - Iniciar Frontend (Somente Frontend).bat
+Inicia apenas o Frontend.
+
+5 - Modificação Banco de Dados (Prisma).bat
+Use apenas quando alterar a estrutura do banco de dados
+(criar tabelas, adicionar/remover campos ou relacionamentos).
+
+6 - Reinstalar Dependências (Corrigir Erros).bat
+Remove e instala novamente todas as dependências.
+
+=========================================================
