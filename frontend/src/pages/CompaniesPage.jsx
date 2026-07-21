@@ -187,6 +187,7 @@ export default function CompaniesPage() {
               <Building2 size={26} />
               <div>
                 <strong>Empresas</strong>
+                <br/>
                 <span>Consulte, cadastre e edite as empresas vinculadas.</span>
               </div>
             </div>

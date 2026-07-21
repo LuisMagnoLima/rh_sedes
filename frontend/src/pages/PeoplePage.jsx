@@ -212,6 +212,7 @@ export default function PeoplePage() {
               <UserRound size={26} />
               <div>
                 <strong>Cadastros de pessoas</strong>
+                <br />
                 <span>Consulte a ficha completa pelo botão visualizar.</span>
               </div>
             </div>
