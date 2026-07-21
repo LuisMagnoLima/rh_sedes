@@ -77,8 +77,8 @@ function validatePerson(payload) {
     email: parsed.email,
     birthDate: parsed.birthDate ? new Date(`${parsed.birthDate}T00:00:00.000Z`) : null,
     course: parsed.course,
-    // O enum antigo do banco é reaproveitado para evitar uma migração destrutiva.
-    type: isSedes ? "CONTRATADO_SEDES" : "TERCEIRIZADO",
+    // Usa os valores atuais do enum PersonType no PostgreSQL.
+    type: isSedes ? "CONTRATADO_SEDES" : "BANCO_TALENTOS",
     companyId: isWorking ? companyId : null,
     working: isWorking,
     sector: parsed.sector || null,

@@ -2156,7 +2156,8 @@ th {
   width: min(560px, 100%) !important;
   max-height: 190px !important;
   border-radius: 12px;
-  background: #000000;
+  background: transparent;
+  object-fit: contain;
 }
 
 .institutional-system-title {
@@ -2187,7 +2188,7 @@ th {
   object-fit: contain;
   object-position: left center;
   border-radius: 8px;
-  background: #000000;
+  background: transparent;
 }
 
 .brand-text strong,
@@ -2198,10 +2199,10 @@ th {
 .topbar-logo {
   width: 70px;
   height: 46px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: left center;
   border-radius: 8px;
-  background: #000000;
+  background: transparent;
 }
 
 .app-splash {

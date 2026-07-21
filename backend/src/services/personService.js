@@ -48,7 +48,7 @@ function serialize(person) {
       (item) => item.technology.name
     ),
     employmentType:
-      person.type === "TERCEIRIZADO" ? "BANCO_TALENTOS" : "SEDES",
+      person.type === "BANCO_TALENTOS" ? "BANCO_TALENTOS" : "SEDES",
     companyId: person.companyId,
     company: person.company?.tradeName || "",
     working: person.working,

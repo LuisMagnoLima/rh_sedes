@@ -19,7 +19,7 @@ enum CompanyStatus {
 
 /// Enumeração usada para limitar os valores válidos de PersonType.
 enum PersonType {
-  TERCEIRIZADO
+  BANCO_TALENTOS
   CONTRATADO_SEDES
 }
 
