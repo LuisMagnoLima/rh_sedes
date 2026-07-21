@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { filters } from "../data/mockData";
+import { useCatalog } from "../contexts/CatalogContext";
 
 const initialState = {
   name: "",
@@ -24,6 +24,7 @@ export default function PeopleForm({
   onCreateCompany,
   canCreateCompany = false,
 }) {
+  const { technologies, courses } = useCatalog();
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
@@ -179,7 +180,7 @@ export default function PeopleForm({
             onChange={(event) => updateField("course", event.target.value)}
           >
             <option value="">Selecione</option>
-            {filters.courses.map((course) => (
+            {courses.map((course) => (
               <option key={course} value={course}>{course}</option>
             ))}
           </select>
@@ -188,7 +189,7 @@ export default function PeopleForm({
         <div className="form-field form-span-2">
           <label>Tecnologias</label>
           <div className="checkbox-grid">
-            {filters.technologies.map((technology) => (
+            {technologies.map((technology) => (
               <label className="checkbox-option" key={technology}>
                 <input
                   type="checkbox"

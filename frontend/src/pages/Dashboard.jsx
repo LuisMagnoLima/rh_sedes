@@ -33,6 +33,7 @@ import FormInput from "../components/FormInput";
 import FormSelect from "../components/FormSelect";
 import Button from "../components/Button";
 import { filters } from "../data/mockData";
+import { useCatalog } from "../contexts/CatalogContext";
 import { usePeople } from "../contexts/PeopleContext";
 import { useCompanies } from "../contexts/CompaniesContext";
 
@@ -40,6 +41,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { people, loadingPeople, peopleError, removePerson } = usePeople();
   const { companies } = useCompanies();
+  const { technologies, courses } = useCatalog();
   const isAdmin = sessionStorage.getItem("rh_sedes_role") === "ADMIN";
   const [theme, setTheme] = useState(localStorage.getItem("rh_sedes_theme") || "light");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -216,7 +218,7 @@ export default function Dashboard() {
                 label="Curso"
                 value={course}
                 onChange={(event) => setCourse(event.target.value)}
-                options={filters.courses}
+                options={courses}
               />
 
               <FormSelect
@@ -238,7 +240,7 @@ export default function Dashboard() {
                 label="Tecnologia"
                 value={technology}
                 onChange={(event) => setTechnology(event.target.value)}
-                options={filters.technologies}
+                options={technologies}
                 placeholder="Todas"
               />
 

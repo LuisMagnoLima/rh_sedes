@@ -23,6 +23,8 @@ import NewPersonPage from "./pages/NewPersonPage";
 import PersonDetailsPage from "./pages/PersonDetailsPage";
 import { CompaniesProvider } from "./contexts/CompaniesContext";
 import { PeopleProvider } from "./contexts/PeopleContext";
+import { CatalogProvider } from "./contexts/CatalogContext";
+import TechnologyCoursePage from "./pages/TechnologyCoursePage";
 import "./styles/global.css";
 
 /**
@@ -37,9 +39,11 @@ function ProtectedRoute({ children }) {
   }
 
   return (
-    <CompaniesProvider>
-      <PeopleProvider>{children}</PeopleProvider>
-    </CompaniesProvider>
+    <CatalogProvider>
+      <CompaniesProvider>
+        <PeopleProvider>{children}</PeopleProvider>
+      </CompaniesProvider>
+    </CatalogProvider>
   );
 }
 
@@ -106,6 +110,16 @@ export default function App() {
         element={
           <ProtectedRoute>
             <CompaniesPage />
+          </ProtectedRoute>
+        }
+      />
+
+
+      <Route
+        path="/tecnologias-cursos"
+        element={
+          <ProtectedRoute>
+            <TechnologyCoursePage />
           </ProtectedRoute>
         }
       />

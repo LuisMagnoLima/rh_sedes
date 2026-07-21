@@ -19,12 +19,8 @@ import {
   Users,
   Building2,
   Cpu,
-  FileText,
-  FolderOpen,
-  Settings,
   LogOut,
   X,
-  BriefcaseBusiness,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -32,15 +28,10 @@ const activeItems = [
   { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard" },
   { label: "Pessoas", icon: Users, to: "/pessoas" },
   { label: "Empresas", icon: Building2, to: "/empresas" },
+  { label: "Tecnologia/Curso", icon: Cpu, to: "/tecnologias-cursos" },
 ];
 
-const illustrativeItems = [
-  { label: "Contratados", icon: BriefcaseBusiness },
-  { label: "Tecnologias", icon: Cpu },
-  { label: "Relatórios", icon: FileText },
-  { label: "Cadastros", icon: FolderOpen },
-  { label: "Configurações", icon: Settings },
-];
+
 
 export default function Sidebar({ onLogout, open, onClose }) {
   return (
@@ -81,19 +72,6 @@ export default function Sidebar({ onLogout, open, onClose }) {
             </NavLink>
           ))}
 
-          {illustrativeItems.map(({ label, icon: Icon }) => (
-            <button
-              key={label}
-              type="button"
-              className="nav-item nav-item-illustrative"
-              title="Funcionalidade ilustrativa"
-              onClick={onClose}
-            >
-              <Icon size={19} />
-              <span>{label}</span>
-              <small>Em breve</small>
-            </button>
-          ))}
         </nav>
 
         <button className="logout-button" onClick={onLogout}>
