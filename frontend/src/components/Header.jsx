@@ -30,7 +30,7 @@ export default function Header({
           <Menu size={21} />
         </button>
 
-        <img src="/logo_sedes.png" alt="SEDES" className="topbar-logo" />
+        <img src="/logo_dashboard_sedes.png" alt="SEDES" className="topbar-logo" />
 
         <div>
           <h1>Dashboard</h1>

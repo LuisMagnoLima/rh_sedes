@@ -2257,3 +2257,32 @@ th {
     max-height: 130px !important;
   }
 }
+
+/* Logos institucionais específicas */
+.institutional-logo {
+  width: min(330px, 75vw);
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 14px;
+}
+
+.topbar-logo {
+  width: 76px;
+  height: 46px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .institutional-logo {
+    width: min(240px, 72vw);
+    max-height: 220px;
+  }
+
+  .topbar-logo {
+    width: 58px;
+    height: 38px;
+  }
+}
