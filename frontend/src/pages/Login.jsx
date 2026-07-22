@@ -66,7 +66,7 @@ export default function Login() {
       <section className="institutional-login-card">
         <div className="institutional-logo-area">
           <img
-            src="/VERTICAL 1-8.png"
+            src="/HORIZONTAL 2-8.png"
             alt="Governo do Estado do Maranhão e SEDES"
             className="institutional-logo"
           />
